@@ -7,31 +7,27 @@ var mysql = require('mysql');
  
 // database setting
 var connection = mysql.createConnection({
-    host : '107.20.75.172',
+    host : 'localhost',
     port : '3306',
-    user : 'root',
-    password : '1234',
-    database : 'test'
+    user : 'tester1',
+    password : '1111',
+    database : 'arduino'
 });
 connection.connect();
  
 
 
-function Dbconnect (req,res){
-    console.log("get join url");
-    var email = req.body.email;
+function dust_1 (req,res){
+    console.log("dust_1 DB Query");
     var responseData = {};
     var result  = new Array();
-    var query = connection.query('select * from testtable ORDER BY colomn1 ASC', function(err, rows){
+    connection.query('select * from dust_1', function(err, rows){
     if(err) throw err;
     if(!err){
-      
-      for(var i=0; i<rows.length;i++){
-        console.log("데이터 조회 : " +rows[i].colomn1+'/'+rows[i].colomn2);
-            result[i]=rows[i].colomn1
-                        +'/'+rows[i].colomn2;
-        }
-        
+      for(var i=0; i<12;i++) {
+          result.push(rows[i]['ppm']);
+      }
+        res.set({'access-control-allow-origin': '*'});
         res.json(result);
     } else {
       console.log("데이터 조회 안됨 ");
@@ -59,7 +55,7 @@ function dbinsert (req,res){
 
  
 module.exports = {
-    Dbconnect : Dbconnect,
+    dust_1 : dust_1,
     dbinsert : dbinsert
 }
  
