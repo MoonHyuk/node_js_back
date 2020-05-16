@@ -7,10 +7,10 @@ var mysql = require('mysql');
  
 // database setting
 var connection = mysql.createConnection({
-    host : 'localhost',
+    host : '3.82.145.212',
     port : '3306',
-    user : 'tester1',
-    password : '1111',
+    user : 'root',
+    password : '1234',
     database : 'arduino'
 });
 connection.connect();
@@ -19,11 +19,12 @@ connection.connect();
 
 function dust_1 (req,res){
     console.log("dust_1 DB Query");
+    res.set({'access-control-allow-origin': '*'});
     var responseData = {};
     var result  = new Array();
     connection.query('select * from dust_1', function(err, rows){
     if(err) throw err;
-    if(!err){
+    if(rows){
       for(var i=0; i<12;i++) {
           result.push(rows[i]['ppm']); //아직 예시코드
       }
@@ -40,6 +41,7 @@ function dust_1 (req,res){
 
 function dust_25 (req,res){
     console.log("dust_25 DB Query");
+    res.set({'access-control-allow-origin': '*'});
     var responseData = {};
     var result  = new Array();
     connection.query('select * from dust_1', function(err, rows){
@@ -61,6 +63,7 @@ function dust_25 (req,res){
 
 function dust_10 (req,res){
     console.log("dust_10 DB Query");
+    res.set({'access-control-allow-origin': '*'});
     var responseData = {};
     var result  = new Array();
     connection.query('select * from dust_1', function(err, rows){
@@ -83,6 +86,7 @@ function dust_10 (req,res){
 
 function dbinsert (req,res){
     console.log("post join url");
+    res.set({'access-control-allow-origin': '*'});
     var body = req.body;
     var colomn1 = body.colomn1;
     var test2 = body.test2;
