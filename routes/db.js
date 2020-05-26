@@ -7,26 +7,26 @@ var mysql = require('mysql');
  
 // database setting
 var connection = mysql.createConnection({
-    host : '3.82.145.212',
+    host : '127.0.0.1', //이지우 ip주소는 58.121.58.139
     port : '3306',
-    user : 'root',
-    password : '1234',
+    user : 'tester1',
+    password : 'qwer1234',
     database : 'arduino'
 });
 connection.connect();
- 
-
 
 function dust_1 (req,res){
     console.log("dust_1 DB Query");
     res.set({'access-control-allow-origin': '*'});
     var responseData = {};
     var result  = new Array();
-    connection.query('select * from dust_1', function(err, rows){
+    connection.query('select checkTime, ppm from pm1live order by checktime DESC limit 12', function(err, rows){
     if(err) throw err;
     if(rows){
+        console.log(rows);
       for(var i=0; i<12;i++) {
           result.push(rows[i]['ppm']); //아직 예시코드
+          result.push(rows[i]['checkTime']); //아직 예시코드
       }
         res.set({'access-control-allow-origin': '*'});
         res.json(result);

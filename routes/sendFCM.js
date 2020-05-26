@@ -1,3 +1,4 @@
+/*
 var express = require('express');
 var app = express();
 var router = express.Router();
@@ -51,4 +52,4 @@ function sendNoti(req, res) {
 
 module.exports = {
     sendNoti
-}
+}*/

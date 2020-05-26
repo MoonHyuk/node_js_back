@@ -1,0 +1,18 @@
+create table dust_1
+(
+	ppm int not null,
+	checkDate date not null,
+	checkTime time not null,
+	factoryId varchar(10) not null,
+	sensorId varchar(10) not null
+);
+
+create table o2
+(
+	ppm int null,
+	checkDate date null,
+	checkTime time null,
+	factoryId varchar(10) null,
+	sensorId varchar(10) null
+);
+
