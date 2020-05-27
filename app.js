@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var dbClean = require('./routes/dbClean');
 
-setInterval(dbClean.cleanPm1Live,3000);
+setInterval(dbClean.cleanPm1Live,60000);
 
 
 var app = express();

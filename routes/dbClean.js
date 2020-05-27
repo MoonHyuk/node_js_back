@@ -15,7 +15,7 @@ var fmt1 = 'YYYY-MM-DD HH:mm:ss';
 function cleanPm1Live (){ // 최근 2분치만 저정하도록 구현
     var d = new Date();
     var now = moment(d).add("-2","minute").format(fmt1);
-    console.log(now);
+    console.log("now : "+now);
     connection.query('delete from co2live WHERE checkTime < \'' +now+'\'');
 }
 
