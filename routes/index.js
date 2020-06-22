@@ -23,8 +23,8 @@ router.get('/api/tolueneLive', db.tolueneLive);
 router.get('/api/pm1Live', db.pm1Live);
 router.get('/api/pm25Live', db.pm25Live);
 router.get('/api/pm10Live', db.pm10Live);
-router.get('/api/o2Live', db.o2Live);
 router.get('/api/vocLive', db.vocLive);
+router.get('/api/o2Live', db.o2Live);
 
 
  
