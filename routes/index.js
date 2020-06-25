@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
 //router.get('/dust_25',db.dust_25);
 //router.get('/dust_10',db.dust_10);
 //router.post('/dbins', db.dbinsert);
-//router.get('/fcm', fcm.sendNoti);               //send FCM Message
+router.get('/api/fcm', fcm.sendNoti);               //send FCM Message
 router.get('/api/co2Live', db.co2Live);
 router.get('/api/tolueneLive', db.tolueneLive);
 router.get('/api/pm1Live', db.pm1Live);

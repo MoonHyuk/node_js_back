@@ -3,7 +3,7 @@ var moment = require('moment');
 
 // database setting
 var connection = mysql.createConnection({
-    host : '127.0.0.1', //이지우 ip주소는 58.121.58.139
+    host : '58.121.58.139', //이지우 ip주소는 58.121.58.139
     port : '3306',
     user : 'tester1',
     password : 'qwer1234',
