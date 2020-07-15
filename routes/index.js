@@ -17,14 +17,19 @@ router.get('/', function(req, res) {
 //router.get('/dust_25',db.dust_25);
 //router.get('/dust_10',db.dust_10);
 //router.post('/dbins', db.dbinsert);
-router.get('/api/fcm', fcm.sendNoti);               //send FCM Message
+//router.get('/api/fcm', fcm.sendNoti);               //send FCM Message
 router.get('/api/co2Live', db.co2Live);
+router.get('/api/coLive', db.coLive);
 router.get('/api/tolueneLive', db.tolueneLive);
 router.get('/api/pm1Live', db.pm1Live);
 router.get('/api/pm25Live', db.pm25Live);
 router.get('/api/pm10Live', db.pm10Live);
 router.get('/api/vocLive', db.vocLive);
 router.get('/api/o2Live', db.o2Live);
+router.get('/api/h2hoLive', db.h2hoLive);
+router.get('/api/radonLive', db.radonLive);
+
+
 
 
  

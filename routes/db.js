@@ -59,6 +59,28 @@ function co2Live (req,res){
     });
 }
 
+function coLive (req,res){
+    res.set({'access-control-allow-origin': '*'});
+    var responseData = {};
+    var result  = new Array();
+    connection.query('select * from colive order by checkTime DESC', function(err, rows){
+        if(err) throw err;
+        if(!err&&rows.length>0){
+            for(var i=0; i<6;i++) {
+                result.push(rows[i]['ppm']);
+                result.push(rows[i]['checkTime']);
+            }
+            res.set({'access-control-allow-origin': '*'});
+            res.json(result);
+
+        } else {
+            console.log("데이터 조회 안됨 ");
+            responseData.result = "none";
+            responseData.name = "";
+        }
+    });
+}
+
 function tolueneLive (req,res){
     res.set({'access-control-allow-origin': '*'});
     var responseData = {};
@@ -190,8 +212,52 @@ function vocLive (req,res){
         }
     });
 }
- 
+
+function h2hoLive (req,res){
+    res.set({'access-control-allow-origin': '*'});
+    var responseData = {};
+    var result  = new Array();
+    connection.query('select * from h2holive order by checkTime DESC', function(err, rows){
+        if(err) throw err;
+        if(!err&&rows.length>0){
+            for(var i=0; i<12;i++) {
+                result.push(rows[i]['ppm']);
+                result.push(rows[i]['checkTime']);
+            }
+            res.set({'access-control-allow-origin': '*'});
+            res.json(result);
+
+        } else {
+            console.log("데이터 조회 안됨 ");
+            responseData.result = "none";
+            responseData.name = "";
+        }
+    });
+}
+
+function radonLive (req,res){
+    res.set({'access-control-allow-origin': '*'});
+    var responseData = {};
+    var result  = new Array();
+    connection.query('select * from radonlive order by checkTime DESC', function(err, rows){
+        if(err) throw err;
+        if(!err&&rows.length>0){
+            for(var i=0; i<12;i++) {
+                result.push(rows[i]['ppm']);
+                result.push(rows[i]['checkTime']);
+            }
+            res.set({'access-control-allow-origin': '*'});
+            res.json(result);
+
+        } else {
+            console.log("데이터 조회 안됨 ");
+            responseData.result = "none";
+            responseData.name = "";
+        }
+    });
+}
+
 module.exports = {
-    co2Live, tolueneLive, pm1Live, pm10Live, pm25Live, o2Live, vocLive
+    co2Live, tolueneLive, pm1Live, pm10Live, pm25Live, o2Live, vocLive, coLive, h2hoLive, radonLive
 }
  
