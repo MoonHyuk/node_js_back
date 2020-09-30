@@ -1,24 +1,10 @@
 var express = require("express");
 var router = express.Router();
 var liveController = require("./live.controller");
-var fcm = require("../service/sendFCM");
-
-/* GET home page. */
-router.get("/", function (req, res) {
-	res.set({ "access-control-allow-origin": "*" });
-	res.status(200).json({
-		success: true,
-	});
-});
-
-//router.get('/dust_1', db.dust_1);
-//localhost:3030/dust_1에 db.dust_1 함수를 매핑
-//router.get('/dust_25',db.dust_25);
-//router.get('/dust_10',db.dust_10);
-//router.post('/dbins', db.dbinsert);
+var fcmController = require("./fcm.controller");
 
 //send FCM Message
-//router.get('/api/fcm', fcm.sendNoti);
+router.get("/api/fcm", fcmController.sendNotification);
 
 router.get("/api/co2Live", liveController.co2Live);
 router.get("/api/coLive", liveController.coLive);
