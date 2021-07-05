@@ -15,7 +15,7 @@ async function insertInterval(req, res, next) {
 
 					const recentValue = res.result[0][0];
 					const now = moment().tz("Asia/Seoul");
-					const minuteDiff = moment(recentValue['checkTime']).diff(now, 'minutes');
+					const minuteDiff = moment.tz(recentValue['checkTime'], "Asia/Seoul").diff(now, 'minutes');
 
 					if (Math.abs(minuteDiff) > 1) return;
 
