@@ -10,6 +10,8 @@ const pool = mysql.createPool({
 	database: "arduino",
 	waitForConnections: true,
 	connectionLimit: 10,
+	typeCast: true,
+	dateStrings: true,
 });
 
 module.exports = pool;

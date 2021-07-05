@@ -20,7 +20,7 @@ async function get (req, res) {
       };
     }
     if (acc[x['type']]['count'] % 10 === 0) {
-      x['checkTime'] = moment(x['checkTime']).tz('Asia/Seoul').format('YYYY-MM-DD HH:mm')
+      x['checkTime'] = moment(x['checkTime']).format('YYYY-MM-DD HH:mm')
       acc[x['type']]['data'].push(x);
     }
     acc[x['type']]['count'] += 1;
