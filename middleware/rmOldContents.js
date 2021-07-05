@@ -5,7 +5,7 @@ const { sensors } = require("../model/sensors");
 
 let flag = true;
 //서버 최초 실행시 1번만 실행
-function cleanInterval(req, res, next) {
+async function cleanInterval(req, res, next) {
 	if (flag) {
 		setInterval(() => {
 			sensors.forEach(sensor => {
