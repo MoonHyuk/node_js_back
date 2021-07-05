@@ -1,7 +1,8 @@
-var express = require("express");
-var router = express.Router();
-var liveController = require("./live.controller");
-var fcmController = require("./fcm.controller");
+const express = require("express");
+const router = express.Router();
+const liveController = require("./live.controller");
+const fcmController = require("./fcm.controller");
+const longTermController = require("./longTerm.controller");
 
 //send FCM Message
 router.get("/api/fcm", fcmController.sendNotification);
@@ -16,5 +17,6 @@ router.get("/api/vocLive", liveController.vocLive);
 router.get("/api/o2Live", liveController.o2Live);
 router.get("/api/h2hoLive", liveController.h2hoLive);
 router.get("/api/radonLive", liveController.radonLive);
+router.get("/api/long-term", longTermController.get);
 
 module.exports = router;
