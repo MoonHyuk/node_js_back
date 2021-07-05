@@ -12,7 +12,7 @@ async function cleanInterval(req, res, next) {
 				const now = getCurrTime();
 				db.cleanLive(sensor, now);
 			})
-		}, 1000);
+		}, 600000);
 		flag = false;
 	}
 	next();
