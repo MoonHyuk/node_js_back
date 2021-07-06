@@ -34,7 +34,7 @@ async function insertInterval(req, res, next) {
 					]);
 				});
 			})
-		}, 60000);
+		}, 30000);
 		flag = false;
 	}
 	next();

@@ -11,7 +11,7 @@ async function cleanInterval(req, res, next) {
 				db.cleanLive(sensor, getTimeBeforeMinutes(2));
 			})
 
-			db.cleanLive("long_term", getTimeBeforeMinutes(60 * 24 * 30));
+			db.cleanLive("long_term", getTimeBeforeMinutes(60 * 24 * 15));
 		}, 600000);
 		flag = false;
 	}
