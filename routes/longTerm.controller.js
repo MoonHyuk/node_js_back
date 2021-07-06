@@ -4,18 +4,19 @@ const pool = require("../model/db");
 async function get (req, res) {
   const sql = `SELECT * FROM long_term WHERE checkTime >= ? AND checkTime < ? order by checkTime;`;
 
-  const startTime = req.query.startDatetime ? moment(req.query.startDatetime) : moment().tz("Asia/Seoul").add(-6, 'hours');
-
-  let endTime, interval;
+  let timeInterval, interval;
   switch (req.query.type) {
     case "STEL":
-      endTime = moment(startTime).add(15, 'minutes');
+      timeInterval = moment.duration(15, "minutes");
       interval = 1;
       break;
     default:
-      endTime = moment(startTime).add(6, 'hours');
+      timeInterval = moment.duration(6, "hours");
       interval = 20;
   }
+
+  const startTime = req.query.startDatetime ? moment(req.query.startDatetime) : moment().tz("Asia/Seoul").subtract(timeInterval);
+  const endTime = moment(startTime).add(timeInterval);
 
   const result = await pool.query(sql, [
     startTime.format("YYYY-MM-DD HH:mm:ss"),
