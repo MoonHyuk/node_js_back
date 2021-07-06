@@ -4,7 +4,7 @@ const pool = require("../model/db");
 async function get (req, res) {
   const sql = `SELECT * FROM long_term WHERE checkTime >= ? AND checkTime < ? order by checkTime;`;
 
-  const startTime = moment(req.query.startDatetime) ?? moment().tz("Asia/Seoul");
+  const startTime = req.query.startDatetime ? moment(req.query.startDatetime) : moment().tz("Asia/Seoul").add(-6, 'hours');
   const endTime = moment(startTime).add(6, 'hours');
 
   const result = await pool.query(sql, [
