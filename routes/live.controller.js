@@ -7,7 +7,7 @@ function processingData(result, res, num) {
 	if (!result.success) throw result.err;
 	if (result.result[0].length > 0) {
 		let rows = result.result[0];
-		for (var i = 0; i < num; i++) {
+		for (var i = 0; i < Math.min(num, rows.length); i++) {
 			resultArr.push(rows[i]["ppm"]);
 			resultArr.push(rows[i]["checkTime"]);
 		}
@@ -21,52 +21,52 @@ function processingData(result, res, num) {
 }
 
 async function co2Live(req, res) {
-	let result = await db.liveData("co2live");
+	let result = await db.liveData("co2live", req.query.sensorId);
 	processingData(result, res, 6);
 }
 
 async function coLive(req, res) {
-	let result = await db.liveData("colive");
+	let result = await db.liveData("colive", req.query.sensorId);
 	processingData(result, res, 6);
 }
 
 async function tolueneLive(req, res) {
-	let result = await db.liveData("toluenelive");
+	let result = await db.liveData("toluenelive", req.query.sensorId);
 	processingData(result, res, 6);
 }
 
 async function pm1Live(req, res) {
-	let result = await db.liveData("pm1live");
+	let result = await db.liveData("pm1live", req.query.sensorId);
 	processingData(result, res, 12);
 }
 
 async function pm25Live(req, res) {
-	let result = await db.liveData("pm25live");
+	let result = await db.liveData("pm25live", req.query.sensorId);
 	processingData(result, res, 12);
 }
 
 async function pm10Live(req, res) {
-	let result = await db.liveData("pm10live");
+	let result = await db.liveData("pm10live", req.query.sensorId);
 	processingData(result, res, 12);
 }
 
 async function o2Live(req, res) {
-	let result = await db.liveData("o2live");
+	let result = await db.liveData("o2live", req.query.sensorId);
 	processingData(result, res, 12);
 }
 
 async function vocLive(req, res) {
-	let result = await db.liveData("tvoclive");
+	let result = await db.liveData("tvoclive", req.query.sensorId);
 	processingData(result, res, 12);
 }
 
 async function h2hoLive(req, res) {
-	let result = await db.liveData("h2holive");
+	let result = await db.liveData("h2holive", req.query.sensorId);
 	processingData(result, res, 12);
 }
 
 async function radonLive(req, res) {
-	let result = await db.liveData("radonlive");
+	let result = await db.liveData("radonlive", req.query.sensorId);
 	processingData(result, res, 12);
 }
 

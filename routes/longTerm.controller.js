@@ -2,7 +2,7 @@ const moment = require("moment-timezone");
 const pool = require("../model/db");
 
 async function get (req, res) {
-  const sql = `SELECT * FROM long_term WHERE checkTime >= ? AND checkTime < ? order by checkTime;`;
+  const sql = `SELECT * FROM long_term WHERE sensorId = ? AND checkTime >= ? AND checkTime < ? order by checkTime;`;
 
   let timeInterval, interval;
   switch (req.query.type) {
@@ -19,6 +19,7 @@ async function get (req, res) {
   const endTime = moment(startTime).add(timeInterval);
 
   const result = await pool.query(sql, [
+    req.query.sensorId ?? 1,
     startTime.format("YYYY-MM-DD HH:mm:ss"),
     endTime.format("YYYY-MM-DD HH:mm:ss")
   ]);
