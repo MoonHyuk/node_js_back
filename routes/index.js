@@ -15,6 +15,7 @@ router.get("/api/pm25Live", liveController.pm25Live);
 router.get("/api/pm10Live", liveController.pm10Live);
 router.get("/api/vocLive", liveController.vocLive);
 router.get("/api/o2Live", liveController.o2Live);
+router.get("/api/o3Live", liveController.o3Live);
 router.get("/api/h2hoLive", liveController.h2hoLive);
 router.get("/api/radonLive", liveController.radonLive);
 router.get("/api/long-term", longTermController.get);

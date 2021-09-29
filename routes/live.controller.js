@@ -55,6 +55,12 @@ async function o2Live(req, res) {
 	processingData(result, res, 12);
 }
 
+
+async function o3Live(req, res) {
+	let result = await db.liveData("o3live", req.query.sensorId);
+	processingData(result, res, 12);
+}
+
 async function vocLive(req, res) {
 	let result = await db.liveData("tvoclive", req.query.sensorId);
 	processingData(result, res, 12);
@@ -77,6 +83,7 @@ module.exports = {
 	pm10Live,
 	pm25Live,
 	o2Live,
+	o3Live,
 	vocLive,
 	coLive,
 	h2hoLive,
