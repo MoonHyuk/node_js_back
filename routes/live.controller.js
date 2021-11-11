@@ -76,6 +76,16 @@ async function radonLive(req, res) {
 	processingData(result, res, 12);
 }
 
+async function temperatureLive(req, res) {
+	let result = await db.liveData("temperaturelive", req.query.sensorId);
+	processingData(result, res, 12);
+}
+
+async function humidityLive(req, res) {
+	let result = await db.liveData("humiditylive", req.query.sensorId);
+	processingData(result, res, 12);
+}
+
 module.exports = {
 	co2Live,
 	tolueneLive,
@@ -88,4 +98,6 @@ module.exports = {
 	coLive,
 	h2hoLive,
 	radonLive,
+	temperatureLive,
+	humidityLive,
 };

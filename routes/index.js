@@ -18,6 +18,8 @@ router.get("/api/o2Live", liveController.o2Live);
 router.get("/api/o3Live", liveController.o3Live);
 router.get("/api/h2hoLive", liveController.h2hoLive);
 router.get("/api/radonLive", liveController.radonLive);
+router.get("/api/temperatureLive", liveController.temperatureLive);
+router.get("/api/humidityLive", liveController.humidityLive);
 router.get("/api/long-term", longTermController.get);
 
 module.exports = router;
